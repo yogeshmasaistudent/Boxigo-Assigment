@@ -23,6 +23,14 @@ The project adheres to a clean and modular folder structure as outlined below
   - **InventoryStyle/**: Specific styles for the InventoryDetails component.
   - **responsiveStyle/**: Styles to ensure the application is responsive across devices.
 
+
+## Demo
+You can view a live demo of the application [here](https://boxigo-assigment.vercel.app/).
+
+
+## Video Demo
+A video demo of the application can be found [here](https://drive.google.com/file/d/1LCr73gVFYH8JoZKThW2nxY6t8koGRCS5/view?usp=sharing).
+
 ## Setup and Installation
 
 To set up and run the project locally, follow these steps:
@@ -39,7 +47,9 @@ To set up and run the project locally, follow these steps:
 ## Handling CORS Issues
 The provided API had CORS issues which were resolved by setting up a basic server. This server acts as a proxy, fetching data from the Boxigo API and serving it to the React application without CORS errors.
 
+## Backend Server Live on Render 
+You can view our Backend server live here  [here](https://boxigo-backend-9.onrender.com/api/sample-data).
 
+## Thank You
+Thank you to Boxigo  for this opportunity to showcase my skills through this assignment.
 
-     
-   
