@@ -1,0 +1,150 @@
+/* responsiveStyles.css */
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px 15px;
+    }
+
+    .navbar-heading {
+        font-size: 1.5rem;
+    }
+
+    .navbar-button {
+        font-size: 0.875rem;
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 8px 10px;
+    }
+
+    .navbar-heading {
+        font-size: 1.25rem;
+    }
+
+    .navbar-button {
+        font-size: 0.75rem;
+        margin-right: 5px;
+    }
+}
+
+/* MyMove style  */
+
+/* responsiveStyles.css */
+
+/* General Styles */
+.my-moves-container {
+    padding: 1rem;
+}
+
+.my-move-box {
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    border-width: 1px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.my-move-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.my-move-header .icon-container {
+    color: red;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 50%;
+    padding: 0.5rem;
+    margin: 0.5rem;
+}
+
+.my-move-details,
+.my-move-additional-details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: gray;
+}
+
+.my-move-additional-details {
+    margin-top: 1rem;
+}
+
+.my-move-disclaimer {
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    color: gray;
+    margin-top: 0.5rem;
+}
+
+.my-move-disclaimer .icon {
+    color: tomato;
+    margin-right: 0.5rem;
+}
+
+.my-move-additional-info {
+    margin-bottom: 1rem;
+    margin-top: 2.5rem;
+}
+
+.my-move-buttons {
+    display: flex;
+    margin-top: 1rem;
+}
+
+.my-move-button {
+    margin-left: 0.5rem;
+}
+
+.my-move-inventory {
+    margin-top: 1rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .my-move-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .my-move-details {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .my-move-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .my-move-button {
+        margin-top: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .my-move-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .my-move-details {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .my-move-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .my-move-button {
+        margin-top: 0.5rem;
+    }
+}
+
+

@@ -8,6 +8,7 @@ const Navbar = () => {
   return (
     <Box
       as="nav"
+      className="navbar"
       bg="white"
       px={6}
       py={4}
@@ -18,11 +19,17 @@ const Navbar = () => {
       height="85px"
     >
       <Flex justify="space-between" align="center">
-        <Heading as="div" color="orange.500" fontSize="2xl">
+        <Heading
+          as="div"
+          className="navbar-heading"
+          color="orange.500"
+          fontSize="2xl"
+        >
           Boxigo
         </Heading>
         <ButtonGroup spacing={6}>
           <MotionButton
+            className="navbar-button"
             variant="link"
             color="orange.500"
             fontWeight="semibold"
@@ -32,6 +39,7 @@ const Navbar = () => {
             Home
           </MotionButton>
           <MotionButton
+            className="navbar-button"
             variant="link"
             color="orange.500"
             fontWeight="semibold"
@@ -41,6 +49,7 @@ const Navbar = () => {
             About
           </MotionButton>
           <MotionButton
+            className="navbar-button"
             variant="link"
             color="orange.500"
             fontWeight="semibold"
@@ -50,6 +59,7 @@ const Navbar = () => {
             Services
           </MotionButton>
           <MotionButton
+            className="navbar-button"
             variant="link"
             color="orange.500"
             fontWeight="semibold"

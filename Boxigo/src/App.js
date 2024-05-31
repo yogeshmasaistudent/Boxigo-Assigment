@@ -6,6 +6,7 @@ import MyProfile from './page/MyProfile';
 import Logout from './page/Logout';
 import GetRequest from './page/GetRequest';
 import Navbar from './components/Navbar';
+import "../src/styles/responsiveStyles.css"
 const App = () => {
   return (
     <Router>

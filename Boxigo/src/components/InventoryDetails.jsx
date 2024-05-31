@@ -1,5 +1,15 @@
-import React from 'react';
-import { Accordion, AccordionItem, AccordionButton, AccordionPanel, Box, Text, Flex, AccordionIcon } from '@chakra-ui/react';
+import React from "react";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  Box,
+  Text,
+  Flex,
+  AccordionIcon,
+} from "@chakra-ui/react";
+import "../styles/inventoryStyles.css"; // Import the updated CSS file
 
 const InventoryDetails = ({ data }) => {
   if (!data || !data.category || !Array.isArray(data.category)) {
@@ -19,47 +29,54 @@ const InventoryDetails = ({ data }) => {
   }, 0);
 
   return (
-    <Accordion allowToggle>
+    <Accordion allowToggle className="inventory-accordion">
       <AccordionItem>
-        <AccordionButton>
+        <AccordionButton className="accordion-button">
           <Box flex="1" textAlign="left" fontWeight="bold">
-            <Text color={'tomato'}>{data.displayName} <Box width="25px" textAlign="center" height="25px" borderRadius="50%" color={'white'} backgroundColor="tomato">{total}</Box> </Text>
+            <Text color={"tomato"}>
+              {data.displayName} <Box className="total-box">{total}</Box>{" "}
+            </Text>
           </Box>
-          {/* <Box>{total}</Box> */}
           <AccordionIcon />
         </AccordionButton>
-        <AccordionPanel pb={4}>
+        <AccordionPanel pb={4} className="accordion-panel">
           {total <= 0 ? (
             <Text>No Items in this Category</Text>
           ) : (
             <Box>
-              {category.map((ele, i) => (
-                count[i] !== 0 && (
-                  <Box key={i} mb={4}>
-                    <Text fontWeight="bold" mb={2}>{ele.displayName}</Text>
-                    {ele.items.map((elem, index) => (
-                      elem.qty >= 1 && (
-                        <Flex key={index} mb={2}>
-                          <Box>
-                            <Text>{elem.displayName}</Text>
-
-                            <Text>Q: {elem.qty}</Text>
-                          </Box>
-                          {elem.type.length > 0 ? (
-                            elem.type
-                              .filter(typeEle => typeEle.selected)
-                              .map((typeEle, typeind) => (
-                                <Text key={typeind} ml={4}> {typeEle.option}</Text>
-                              ))
-                          ) : (
-                            <Text ml={4}></Text>
-                          )}
-                        </Flex>
-                      )
-                    ))}
-                  </Box>
-                )
-              ))}
+              {category.map(
+                (ele, i) =>
+                  count[i] !== 0 && (
+                    <Box key={i} mb={4}>
+                      <Text fontWeight="bold" mb={2}>
+                        {ele.displayName}
+                      </Text>
+                      {ele.items.map(
+                        (elem, index) =>
+                          elem.qty >= 1 && (
+                            <Flex key={index} mb={2}>
+                              <Box>
+                                <Text>{elem.displayName}</Text>
+                                <Text>Q: {elem.qty}</Text>
+                              </Box>
+                              {elem.type.length > 0 ? (
+                                elem.type
+                                  .filter((typeEle) => typeEle.selected)
+                                  .map((typeEle, typeind) => (
+                                    <Text key={typeind} ml={4}>
+                                      {" "}
+                                      {typeEle.option}
+                                    </Text>
+                                  ))
+                              ) : (
+                                <Text ml={4}></Text>
+                              )}
+                            </Flex>
+                          )
+                      )}
+                    </Box>
+                  )
+              )}
             </Box>
           )}
         </AccordionPanel>

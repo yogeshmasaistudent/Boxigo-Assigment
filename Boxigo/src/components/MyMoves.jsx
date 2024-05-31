@@ -1,12 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { Accordion, Box, Button, Checkbox, Flex, Icon, Spinner, Text } from '@chakra-ui/react';
+import React, { useEffect, useState } from "react";
+import {
+  Accordion,
+  Box,
+  Button,
+  Checkbox,
+  Flex,
+  Icon,
+  Spinner,
+  Text,
+} from "@chakra-ui/react";
 import { IoMdHome } from "react-icons/io";
 import { FaCarSide } from "react-icons/fa";
 import { GiPathDistance } from "react-icons/gi";
 import { TiPencil } from "react-icons/ti";
 import { TbInfoTriangle } from "react-icons/tb";
 import { FaArrowRightLong } from "react-icons/fa6";
-import InventoryDetails from './InventoryDetails';
+import InventoryDetails from "./InventoryDetails";
 
 const MyMoves = () => {
   const [moves, setMoves] = useState([]);
@@ -14,62 +23,61 @@ const MyMoves = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-      fetch(`${process.env.REACT_APP_BACKEND_URL}`)
-        .then((response) => response.json())
-        .then((data) => {
-          setMoves(data.Customer_Estimate_Flow);
-          setLoading(false);
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-          setLoading(false);
-        });
-          console.log(process.env.REACT_APP_BACKEND_URL);
+    fetch(`${process.env.REACT_APP_BACKEND_URL}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setMoves(data.Customer_Estimate_Flow);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setLoading(false);
+      });
+    console.log(process.env.REACT_APP_BACKEND_URL);
   }, []);
-
 
   const handleToggle = (estimate_id) => {
     setExpandedMove(expandedMove === estimate_id ? null : estimate_id);
   };
+
   if (loading) {
     return (
       <Flex justifyContent="center" alignItems="center" height="100vh">
-        <Spinner 
-        thickness='4px'
-        speed='0.65s'
-        emptyColor='gray.200'
-        color='tomato'
-        size='xl' />
+        <Spinner
+          thickness="4px"
+          speed="0.65s"
+          emptyColor="gray.200"
+          color="tomato"
+          size="xl"
+        />
       </Flex>
     );
   }
 
   return (
-    <Box p="5">
+    <Box p="5" className="my-moves-container">
       <Text fontWeight="bold" fontSize="xl" mb="4">
         My Moves
       </Text>
       {moves.map((move) => (
-        <Box key={move.estimate_id} p="5" shadow="md" borderWidth="1px" mb="4">
-          <Flex alignItems="center" mb="2">
+        <Box
+          key={move.estimate_id}
+          p="5"
+          shadow="md"
+          borderWidth="1px"
+          mb="4"
+          className="my-move-box"
+        >
+          <Flex alignItems="center" mb="2" className="my-move-header">
             <Text fontWeight="bold" fontSize="sm">
               From:{" "}
             </Text>
             <Text fontSize="sm" ml="2">
               {move.moving_from}
             </Text>
-            <div
-              style={{
-                color: "red",
-                boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-                borderRadius: "50%",
-                padding: "8px",
-                margin: "8px",
-              }}
-            >
+            <div className="icon-container">
               <FaArrowRightLong />
             </div>
-
             <Text fontWeight="bold" fontSize="sm">
               To:{" "}
             </Text>
@@ -83,14 +91,13 @@ const MyMoves = () => {
               {move.estimate_id}
             </Text>
           </Flex>
-          <Flex display="flex">
+          <Flex display="flex" className="my-move-details">
             <Icon as={IoMdHome} size={24} color={"tomato"} />
-            {/* <Text style={{display:"flex"}}>{move.property_size}</Text> */}
             {move.property_size}
             <Icon
               as={GiPathDistance}
-              ml="6"
-              mr="2"
+              // ml="4"
+              // mr="25"
               size={24}
               color={"tomato"}
             />
@@ -103,8 +110,7 @@ const MyMoves = () => {
                 is flexible
               </Checkbox>
             </Flex>
-
-            <Flex mb="9" ml="30">
+            <Flex className="my-move-buttons">
               <Button
                 color={"red"}
                 colorScheme="green"
@@ -115,6 +121,7 @@ const MyMoves = () => {
                 variant="outline"
                 ml="2"
                 onClick={() => handleToggle(move.estimate_id)}
+                className="my-move-button"
               >
                 {expandedMove === move.estimate_id
                   ? "Hide Details"
@@ -125,21 +132,33 @@ const MyMoves = () => {
                 color={"white"}
                 ml="2"
                 _hover={{ bg: "green", color: "white" }}
+                className="my-move-button"
               >
                 Quotes Awaiting
               </Button>
             </Flex>
           </Flex>
-
-          <Flex mt="2" fontSize="sm" color="gray.500" alignItems="center">
-            <Icon as={TbInfoTriangle} mr="2" size={24} color={"tomato"} />
+          <Flex
+            mt="2"
+            fontSize="sm"
+            color="gray.500"
+            alignItems="center"
+            className="my-move-disclaimer"
+          >
+            <Icon
+              as={TbInfoTriangle}
+              mr="2"
+              size={24}
+              color={"tomato"}
+              className="icon"
+            />
             <Text fontWeight="bold">Disclaimer: </Text>
             <Text ml="2">
               Please update your move date before two days of shifting
             </Text>
           </Flex>
           {expandedMove === move.estimate_id && (
-            <Box mb="4" mt={10}>
+            <Box mb="4" mt={10} className="my-move-additional-info">
               <Flex justifyContent={"space-between"}>
                 <Text fontWeight="bold" mb="2" mt={2}>
                   Additional Information
@@ -162,8 +181,9 @@ const MyMoves = () => {
                   color="tomato"
                   borderColor="tomato"
                   variant="outline"
-                  mt={4}
                   _hover={{ bg: "tomato", color: "white" }}
+                  mt={4}
+                  className="my-move-button"
                 >
                   Edit House Details
                 </Button>
@@ -209,11 +229,12 @@ const MyMoves = () => {
                   mt="3"
                   ml="2"
                   _hover={{ bg: "tomato", color: "white" }}
+                  className="my-move-button"
                 >
                   Edit Inventory
                 </Button>
               </Flex>
-              <Box mt="4">
+              <Box mt="4" className="my-move-inventory">
                 <Accordion allowToggle>
                   {move.items.inventory.map((item) => (
                     <InventoryDetails key={item.id} data={item} />

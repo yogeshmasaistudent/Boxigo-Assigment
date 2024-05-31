@@ -1,0 +1,73 @@
+/* Default Styles */
+.inventory-accordion {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.accordion-button {
+    background-color: #f7f7f7;
+    border-radius: 0.25rem;
+    padding: 0.75rem;
+}
+
+.total-box {
+    width: 25px;
+    text-align: center;
+    height: 25px;
+    border-radius: 50%;
+    color: white;
+    background-color: tomato;
+}
+
+.accordion-panel {
+    padding: 1rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 1920px) {
+    .accordion-button {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 1600px) {
+    .accordion-button {
+        padding: 0.75rem;
+    }
+}
+
+@media (max-width: 1366px) {
+    .accordion-button {
+        padding: 0.5rem;
+    }
+
+    .total-box {
+        width: 20px;
+        height: 20px;
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .accordion-button {
+        padding: 0.25rem;
+    }
+
+    .total-box {
+        width: 18px;
+        height: 18px;
+        font-size: 0.65rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .accordion-button {
+        padding: 0.15rem;
+    }
+
+    .total-box {
+        width: 15px;
+        height: 15px;
+        font-size: 0.5rem;
+    }
+}
