@@ -14,18 +14,16 @@ const MyMoves = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // fetch("http://test.api.boxigo.in/sample-data/")
-      fetch(`${process.env.REACT_APP_BACKEND_URL}/sample-data/`)
-
-      .then((response) => response.json())
-      .then((data) => {
-        setMoves(data.Customer_Estimate_Flow);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-        setLoading(false);
-      });
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/api/sample-data`)
+        .then((response) => response.json())
+        .then((data) => {
+          setMoves(data.Customer_Estimate_Flow);
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+          setLoading(false);
+        });
           console.log(process.env.REACT_APP_BACKEND_URL);
   }, []);
 
