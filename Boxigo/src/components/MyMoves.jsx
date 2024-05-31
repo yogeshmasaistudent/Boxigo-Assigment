@@ -14,17 +14,21 @@ const MyMoves = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://test.api.boxigo.in/sample-data/')
-      .then(response => response.json())
-      .then(data => {
+    // fetch("http://test.api.boxigo.in/sample-data/")
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/sample-data/`)
+
+      .then((response) => response.json())
+      .then((data) => {
         setMoves(data.Customer_Estimate_Flow);
         setLoading(false);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error fetching data:", error);
         setLoading(false);
       });
+          console.log(process.env.REACT_APP_BACKEND_URL);
   }, []);
+
 
   const handleToggle = (estimate_id) => {
     setExpandedMove(expandedMove === estimate_id ? null : estimate_id);
@@ -56,13 +60,18 @@ const MyMoves = () => {
             <Text fontSize="sm" ml="2">
               {move.moving_from}
             </Text>
-            <Icon
-              as={FaArrowRightLong}
-              ml="2"
-              mr="2"
-              size={50}
-              color={"tomato"}
-            />
+            <div
+              style={{
+                color: "red",
+                boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+                borderRadius: "50%",
+                padding: "8px",
+                margin: "8px",
+              }}
+            >
+              <FaArrowRightLong />
+            </div>
+
             <Text fontWeight="bold" fontSize="sm">
               To:{" "}
             </Text>
@@ -76,9 +85,10 @@ const MyMoves = () => {
               {move.estimate_id}
             </Text>
           </Flex>
-          <Flex mb="2" display="flex">
-            <Icon as={IoMdHome} ml="2" mr="2" size={24} color={"tomato"} />
-            <Text>{move.property_size}</Text>
+          <Flex display="flex">
+            <Icon as={IoMdHome} size={24} color={"tomato"} />
+            {/* <Text style={{display:"flex"}}>{move.property_size}</Text> */}
+            {move.property_size}
             <Icon
               as={GiPathDistance}
               ml="6"
@@ -91,7 +101,7 @@ const MyMoves = () => {
             <Text>{move.moving_on}</Text>
             <Flex alignItems="center" ml="5">
               <Icon as={TiPencil} size={24} />
-              <Checkbox colorScheme="red" defaultChecked ml="8">
+              <Checkbox colorScheme="red" defaultChecked ml="8" mb="6">
                 is flexible
               </Checkbox>
             </Flex>
@@ -100,7 +110,10 @@ const MyMoves = () => {
               <Button
                 color={"red"}
                 colorScheme="green"
-                _hover={{ bg: "tomato", color: "white" }}
+                _hover={{
+                  bg: expandedMove === move.estimate_id ? "red.600" : "tomato",
+                  color: "white",
+                }}
                 variant="outline"
                 ml="2"
                 onClick={() => handleToggle(move.estimate_id)}
@@ -133,7 +146,12 @@ const MyMoves = () => {
                 <Text fontWeight="bold" mb="2" mt={2}>
                   Additional Information
                 </Text>
-                <Button color="tomato" borderColor="tomato" variant="outline">
+                <Button
+                  color="tomato"
+                  borderColor="tomato"
+                  variant="outline"
+                  _hover={{ bg: "tomato", color: "white" }}
+                >
                   Edit Additional Info
                 </Button>
               </Flex>
@@ -147,6 +165,7 @@ const MyMoves = () => {
                   borderColor="tomato"
                   variant="outline"
                   mt={4}
+                  _hover={{ bg: "tomato", color: "white" }}
                 >
                   Edit House Details
                 </Button>
@@ -191,6 +210,7 @@ const MyMoves = () => {
                   variant="outline"
                   mt="3"
                   ml="2"
+                  _hover={{ bg: "tomato", color: "white" }}
                 >
                   Edit Inventory
                 </Button>

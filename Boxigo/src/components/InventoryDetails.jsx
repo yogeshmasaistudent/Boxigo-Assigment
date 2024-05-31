@@ -23,7 +23,7 @@ const InventoryDetails = ({ data }) => {
       <AccordionItem>
         <AccordionButton>
           <Box flex="1" textAlign="left" fontWeight="bold">
-            <Text color={'tomato'}>{data.displayName} <Box width="25px" height="25px" borderRadius="50%" color={'white'} backgroundColor="tomato">{total}</Box> </Text>
+            <Text color={'tomato'}>{data.displayName} <Box width="25px" textAlign="center" height="25px" borderRadius="50%" color={'white'} backgroundColor="tomato">{total}</Box> </Text>
           </Box>
           {/* <Box>{total}</Box> */}
           <AccordionIcon />

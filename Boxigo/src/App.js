@@ -5,9 +5,11 @@ import MyMoves from './components/MyMoves';
 import MyProfile from './page/MyProfile';
 import Logout from './page/Logout';
 import GetRequest from './page/GetRequest';
+import Navbar from './components/Navbar';
 const App = () => {
   return (
     <Router>
+     <Navbar/>
       <Routes>
    
         <Route
