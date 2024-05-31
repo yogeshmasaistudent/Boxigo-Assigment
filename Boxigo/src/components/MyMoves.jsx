@@ -14,7 +14,7 @@ const MyMoves = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-      fetch(`${process.env.REACT_APP_BACKEND_URL}/api/sample-data`)
+      fetch(`${process.env.REACT_APP_BACKEND_URL}`)
         .then((response) => response.json())
         .then((data) => {
           setMoves(data.Customer_Estimate_Flow);
